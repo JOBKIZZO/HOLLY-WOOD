@@ -1,0 +1,43 @@
+HOLLY WOOD
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HOLLY WOOD</title>
+</head>
+<body>
+<h2>Login</h2>
+  <form id="loginForm">
+    <label>Username:</label>
+    <input type="text" id="loginUsername" required><br><br>
+
+    <label>Password:</label>
+    <input type="password" id="loginPassword" required><br><br>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <p>Don't have an account? <a href="register.html">Register here</a></p>
+html
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const enteredUsername = document.getElementById("loginUsername").value;
+      const enteredPassword = document.getElementById("loginPassword").value;
+
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (
+        storedUser &&
+        enteredUsername === storedUser.username &&
+        enteredPassword === storedUser.password
+      ) {
+        localStorage.setItem("loggedIn", "true"); //
+        alert("Login successful!");
+        window.location.href = "HOLLY WOOD.html"; // Redirect to homepage
+      } else {
+        alert("Invalid username or password.");
+      }
+    });
+  </script>
+</body>
+</html>
